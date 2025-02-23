@@ -14,9 +14,16 @@ namespace Simple_Inventory
             products = new LinkedList<Product>();
         }
         public LinkedList<Product> GetProducts { get { return products; } }
-        public void addProduct(Product product)
+        public void AddProduct(Product product)
         {
             products.AddLast(product);
+        }
+        public void ViewAllProduct()
+        {
+            foreach(Product product in products)
+            {
+                System.Console.WriteLine(product.ProductDetails());
+            }
         }
     }
 }

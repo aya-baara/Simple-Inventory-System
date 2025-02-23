@@ -18,7 +18,7 @@ namespace Simple_Inventory
             Price = price;
             Quantity = quantity;
         }
-        public String productDetails()
+        public String ProductDetails()
         {
             return $" Name = {Name} , Price = {Price} , Quantity={Quantity} .";
         }

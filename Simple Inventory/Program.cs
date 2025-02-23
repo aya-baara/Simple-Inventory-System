@@ -8,13 +8,14 @@ class Program
     {
         Console.WriteLine("Hello, World!");
         Product product = new Product("Laptop", 1000, 5);
+        Product product2 = new Product("Desktop", 1000, 5);
 
         Console.WriteLine(product.Name); 
-        product.Name = "Desktop";
-        Inventory inventory = new Inventory();
-        inventory.addProduct(product);
 
-        // Displaying updated product details
-        product.productDetails();  // Product: Desktop, Price: 1000, Quantity: 5
+        Inventory inventory = new Inventory();
+        inventory.AddProduct(product);
+        inventory.AddProduct(product2);
+
+        inventory.ViewAllProduct();
     }
 }
