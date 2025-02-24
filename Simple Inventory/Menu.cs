@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simple_Inventory
 {
-    class Utilities
+    class Menu
     {
         public  Inventory inventory = new Inventory();
         public  void showMenu()
@@ -103,19 +103,19 @@ namespace Simple_Inventory
                 case "1":
                     Console.Write("Enter new name: ");
                     String newName = Console.ReadLine();
-                    inventory.editProduct(name, ProductProparities.Name, newName, 0);
+                    inventory.editProduct(name, ProductProperties.Name, newName, 0);
                     break;
                 case "2":
                     Console.Write("Enter new price: ");
                     if (int.TryParse(Console.ReadLine(), out int newPrice))
-                        inventory.editProduct(name, ProductProparities.Price, "", newPrice);
+                        inventory.editProduct(name, ProductProperties.Price, "", newPrice);
                     else
                         Console.WriteLine("Invalid price!");
                     break;
                 case "3":
                     Console.Write("Enter new quantity: ");
                     if (int.TryParse(Console.ReadLine(), out int newQuantity))
-                        inventory.editProduct(name, ProductProparities.Quantity, "", newQuantity);
+                        inventory.editProduct(name, ProductProperties.Quantity, "", newQuantity);
                     else
                         Console.WriteLine("Invalid quantity!");
                     break;
@@ -152,7 +152,7 @@ namespace Simple_Inventory
             LinkedListNode<Product> productNode = inventory.searchProduct(name);
             if (productNode != null)
             {
-                Console.WriteLine($"\nProduct Found:\n{productNode.Value.ProductDetails()}");
+                Console.WriteLine($"\nProduct Found:\n{ProductDisplay.GetProductDetails(productNode.Value)}");
             }
             else
             {

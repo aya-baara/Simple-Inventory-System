@@ -6,7 +6,7 @@ class Program
 {
     static void Main()
     {
-        Utilities utilities = new Utilities();
+        Menu utilities = new Menu();
         utilities.showMenu();
 
 
