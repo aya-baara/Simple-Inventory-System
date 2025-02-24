@@ -8,31 +8,29 @@ namespace Simple_Inventory
 {
        class Inventory
        {
-        Dictionary<int, Product> products;
+        public Dictionary<int, Product> Products { get; }
         public Inventory()
         {
-            products = new Dictionary<int, Product>();
+            Products = new Dictionary<int, Product>();
         }
-
-        public Dictionary<int, Product> GetProducts { get { return products; } }
 
         public bool AddProduct(Product product)
         {
-            if (products.ContainsKey(product.ID))
+            if (Products.ContainsKey(product.ID))
             {
                 Console.WriteLine($"Product '{product.ID}' already exists. Not added.");
                 return false;
             }
             else
             {
-                products.Add(product.ID, product);
+                Products.Add(product.ID, product);
                 return true;
             }
         }
 
         public void ViewAllProduct()
         {
-            foreach (var item in products)
+            foreach (var item in Products)
             {
                 System.Console.WriteLine(ProductDisplay.GetProductDetails(item.Value));
             }
@@ -40,9 +38,9 @@ namespace Simple_Inventory
 
         public Product searchProduct(int ID)
         {
-            if (products.ContainsKey(ID))
+            if (Products.ContainsKey(ID))
             {
-                return products[ID]; 
+                return Products[ID]; 
             }
             return null; 
         }
@@ -74,8 +72,8 @@ namespace Simple_Inventory
 
         public bool deleteProduct (int ID)
         {
-            if (products.ContainsKey(ID)) {
-                products.Remove(ID);
+            if (Products.ContainsKey(ID)) {
+                Products.Remove(ID);
                 return true;
             }
             return false;
