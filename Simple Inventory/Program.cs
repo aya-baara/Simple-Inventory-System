@@ -17,5 +17,12 @@ class Program
         inventory.AddProduct(product2);
 
         inventory.ViewAllProduct();
+
+        Console.WriteLine($"Before edit {product2.ProductDetails}");
+        inventory.ViewAllProduct();
+        inventory.editProduct("Desktop", ProductProparities.Price, "", 70);
+        inventory.editProduct("Desktop", ProductProparities.Name, "Desktop1", 0);
+        Console.WriteLine($"After edit {product2.ProductDetails}");
+        inventory.ViewAllProduct();
     }
 }
