@@ -6,82 +6,65 @@ using System.Threading.Tasks;
 
 namespace Simple_Inventory
 {
-    public enum ProductProparities
-    {
-        Name,
-        Price,
-        Quantity
-    }
-    class Inventory
-    {
-        private LinkedList<Product> products;
+       class Inventory
+       {
+        Dictionary<int, Product> products;
         public Inventory()
         {
-            products = new LinkedList<Product>();
+            products = new Dictionary<int, Product>();
         }
-        public LinkedList<Product> GetProducts { get { return products; } }
-        public void AddProduct(Product product)
-        {
-            products.AddLast(product);
-        }
-        public void ViewAllProduct()
-        {
-            foreach (Product product in products)
-            {
-                System.Console.WriteLine(product.ProductDetails());
-            }
-        }
-        public LinkedListNode<Product> searchProduct(String name)
-        {
-            LinkedListNode<Product> current = products.First;
-            while (current != null)
-            {
-                if (current.Value.Name.Equals(name))
-                {
-                    return current;
-                }
-                current = current.Next;
-            }
-            return null;
-        }
-        public Product editProduct(String name, ProductProparities proparities, String s, int num)
-        {
-            LinkedListNode<Product> product = searchProduct(name);
-            if (product != null)
-            {
-                switch (proparities)
-                {
-                    case ProductProparities.Name:
-                        product.Value.Name = s;
-                        break;
-                    case ProductProparities.Price:
-                        product.Value.Price = num;
-                        break;
-                    case ProductProparities.Quantity:
-                        product.Value.Quantity = num;
-                        break;
 
-                }
-                return product.Value;
+        public Dictionary<int, Product> GetProducts { get { return products; } }
 
-
+        public bool AddProduct(Product product)
+        {
+            if (products.ContainsKey(product.ID))
+            {
+                Console.WriteLine($"Product '{product.ID}' already exists. Not added.");
+                return false;
             }
             else
             {
-                Console.WriteLine($"Product name {name} not found ");
-                return null;
+                products.Add(product.ID, product);
+                return true;
             }
         }
 
-        public int deleteProduct (String name)
+        public void ViewAllProduct()
         {
-            LinkedListNode<Product> product = searchProduct(name);
-            if (product != null)
+            foreach (var item in products)
             {
-                products.Remove(product);
-                return 0;
+                System.Console.WriteLine(ProductDisplay.GetProductDetails(item.Value));
             }
-            return -1;
+        }
+
+        public Product searchProduct(int ID)
+        {
+            if (products.ContainsKey(ID))
+            {
+                return products[ID]; 
+            }
+            return null; 
+        }
+
+        //public bool editProduct(Product modifiedProduct,String productName)
+        //{
+        //    LinkedListNode<Product> product = searchProduct(productName);
+        //    if (product != null)
+        //    {
+        //        modifiedProduct.Name=
+        //    }
+
+
+        //}
+
+        public bool deleteProduct (int ID)
+        {
+            if (products.ContainsKey(ID)) {
+                products.Remove(ID);
+                return true;
+            }
+            return false;
         }
     }
 
