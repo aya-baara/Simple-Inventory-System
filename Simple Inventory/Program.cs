@@ -6,23 +6,9 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Hello, World!");
-        Product product = new Product("Laptop", 1000, 5);
-        Product product2 = new Product("Desktop", 1000, 5);
+        Utilities utilities = new Utilities();
+        utilities.showMenu();
 
-        Console.WriteLine(product.Name); 
 
-        Inventory inventory = new Inventory();
-        inventory.AddProduct(product);
-        inventory.AddProduct(product2);
-
-        inventory.ViewAllProduct();
-
-        Console.WriteLine($"Before edit {product2.ProductDetails}");
-        inventory.ViewAllProduct();
-        inventory.editProduct("Desktop", ProductProparities.Price, "", 70);
-        inventory.editProduct("Desktop", ProductProparities.Name, "Desktop1", 0);
-        Console.WriteLine($"After edit {product2.ProductDetails}");
-        inventory.ViewAllProduct();
     }
 }

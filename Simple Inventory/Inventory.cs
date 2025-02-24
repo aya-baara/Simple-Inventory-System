@@ -36,17 +36,19 @@ namespace Simple_Inventory
             LinkedListNode<Product> current = products.First;
             while (current != null)
             {
-                if (current.Value.Name.Equals(name)) {
+                if (current.Value.Name.Equals(name))
+                {
                     return current;
                 }
                 current = current.Next;
             }
             return null;
         }
-        public Product editProduct (String name, ProductProparities proparities,String s,int num)
+        public Product editProduct(String name, ProductProparities proparities, String s, int num)
         {
             LinkedListNode<Product> product = searchProduct(name);
-            if(product != null) {
+            if (product != null)
+            {
                 switch (proparities)
                 {
                     case ProductProparities.Name:
@@ -61,14 +63,26 @@ namespace Simple_Inventory
 
                 }
                 return product.Value;
-            
 
-             }
+
+            }
             else
             {
                 Console.WriteLine($"Product name {name} not found ");
                 return null;
             }
         }
+
+        public int deleteProduct (String name)
+        {
+            LinkedListNode<Product> product = searchProduct(name);
+            if (product != null)
+            {
+                products.Remove(product);
+                return 0;
+            }
+            return -1;
+        }
     }
+
 }
