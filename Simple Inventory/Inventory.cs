@@ -47,16 +47,30 @@ namespace Simple_Inventory
             return null; 
         }
 
-        //public bool editProduct(Product modifiedProduct,String productName)
-        //{
-        //    LinkedListNode<Product> product = searchProduct(productName);
-        //    if (product != null)
-        //    {
-        //        modifiedProduct.Name=
-        //    }
+        public bool editProduct(Product modifiedProduct,int ID)
+        {
+           Product product = searchProduct(ID);
+            if (product != null)
+            {
+                if (modifiedProduct.Name != null)
+                {
+                    product.Name = modifiedProduct.Name;
+                }
+                if (modifiedProduct.Price != null)
+                {
+                    product.Price = modifiedProduct.Price;
+                }
+                if (modifiedProduct.Quantity != null)
+                {
+                    product.Quantity = modifiedProduct.Quantity;
+                }
+                return true;
+
+            }
+            return false;
 
 
-        //}
+        }
 
         public bool deleteProduct (int ID)
         {
