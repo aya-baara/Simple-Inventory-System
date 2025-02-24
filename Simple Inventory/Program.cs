@@ -6,8 +6,8 @@ class Program
 {
     static void Main()
     {
-        Menu utilities = new Menu();
-        utilities.showMenu();
+        Menu menu = new Menu();
+        menu.showMenu();
 
 
     }
