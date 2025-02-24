@@ -47,11 +47,11 @@ namespace Simple_Inventory
                 {
                     product.Name = modifiedProduct.Name;
                 }
-                if (modifiedProduct.Price != null)
+                if (modifiedProduct.Price != -1)
                 {
                     product.Price = modifiedProduct.Price;
                 }
-                if (modifiedProduct.Quantity != null)
+                if (modifiedProduct.Quantity != -1)
                 {
                     product.Quantity = modifiedProduct.Quantity;
                 }
