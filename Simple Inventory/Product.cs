@@ -8,16 +8,20 @@ namespace Simple_Inventory
 {
     class Product
     {
+        public int ID  { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public int Quantity { get; set; }
 
-        public Product(string name, int price, int quantity)
+        public Product(int Id,string name, int price, int quantity)
         {
+            ID = Id;
             Name = name;
             Price = price;
             Quantity = quantity;
+           
         }
+
      
     
 

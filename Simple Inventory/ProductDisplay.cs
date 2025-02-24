@@ -11,7 +11,7 @@ namespace Simple_Inventory
     class ProductDisplay
     {
         public static String GetProductDetails(Product product) {
-            return $" Name = {product.Name} , Price = {product.Price} , Quantity={product.Quantity} .";
+            return $"ID = {product.ID} Name = {product.Name} , Price = {product.Price} , Quantity={product.Quantity} .";
         }
     }
 }
