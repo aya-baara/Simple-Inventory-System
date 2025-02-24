@@ -28,13 +28,6 @@ namespace Simple_Inventory
             }
         }
 
-        public void ViewAllProduct()
-        {
-            foreach (var item in Products)
-            {
-                System.Console.WriteLine(ProductDisplay.GetProductDetails(item.Value));
-            }
-        }
 
         public Product searchProduct(int ID)
         {
