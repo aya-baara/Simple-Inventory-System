@@ -21,9 +21,14 @@ namespace Simple_Inventory
             Quantity = quantity;
            
         }
+        public Product(int Id)
+        {
+            ID = Id;
+        }
 
-     
-    
+
+
+
 
     }
 }
