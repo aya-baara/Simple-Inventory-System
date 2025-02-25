@@ -4,12 +4,12 @@ namespace SimpleInventory
        class Inventory
        {
             private Dictionary<int, Product> products = new Dictionary<int, Product>();
-        public IReadOnlyDictionary<int, Product> Products => products;
+            public IReadOnlyDictionary<int, Product> Products => products;
 
-        public Inventory()
-            {
-                products = new Dictionary<int, Product>();
-            }
+            public Inventory()
+                {
+                    products = new Dictionary<int, Product>();
+                }
 
             public bool AddProduct(Product product)
             {
@@ -26,13 +26,9 @@ namespace SimpleInventory
             }
 
 
-            public Product searchProduct(int ID)
+            public Product? searchProduct(int ID)
             {
-                if (products.ContainsKey(ID))
-                {
-                    return products[ID]; 
-                }
-                return null; 
+                return products.GetValueOrDefault(ID, null);
             }
 
             public bool editProduct(Product modifiedProduct,int ID)
@@ -62,11 +58,8 @@ namespace SimpleInventory
 
             public bool deleteProduct (int ID)
             {
-                if (products.ContainsKey(ID)) {
-                products.Remove(ID);
-                    return true;
-                }
-                return false;
+                
+                return products.Remove(ID); ;
             }
         }
 
