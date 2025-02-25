@@ -15,7 +15,6 @@ namespace SimpleInventory
             {
                 if (products.ContainsKey(product.ID))
                 {
-                    Console.WriteLine($"Product '{product.ID}' already exists. Not added.");
                     return false;
                 }
                 else
