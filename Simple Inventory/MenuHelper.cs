@@ -76,7 +76,7 @@ namespace SimpleInventory
                 newQuantity = -1;
             }
 
-            bool updated = productService.editProduct(ID, newName, newPrice, newQuantity);
+            bool updated = productService.EditProduct(ID, newName, newPrice, newQuantity);
 
             if (updated)
             {

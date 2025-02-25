@@ -25,14 +25,14 @@ namespace SimpleInventory
             }
 
 
-            public Product? searchProduct(int ID)
+            public Product? SearchProduct(int id)
             {
-                return products.GetValueOrDefault(ID, null);
+                return products.GetValueOrDefault(id, null);
             }
 
-            public bool editProduct(Product modifiedProduct,int ID)
+            public bool EditProduct(Product modifiedProduct,int id)
             {
-               Product product = searchProduct(ID);
+               Product product = SearchProduct(id);
                 if (product != null)
                 {
                     if (modifiedProduct.Name != null)
@@ -55,10 +55,10 @@ namespace SimpleInventory
 
             }
 
-            public bool deleteProduct (int ID)
+            public bool DeleteProduct (int id)
             {
                 
-                return products.Remove(ID); ;
+                return products.Remove(id); ;
             }
         }
 

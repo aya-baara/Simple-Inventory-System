@@ -12,7 +12,7 @@ namespace SimpleInventory
         }
         public bool CheckProdutDuplication(int ID)
         {
-            return Inventory.searchProduct(ID)!=null;
+            return Inventory.SearchProduct(ID)!=null;
            
         }
 
@@ -24,12 +24,12 @@ namespace SimpleInventory
 
         public void DeleteProduct(int ID)
         {
-            Inventory.deleteProduct(ID);
+            Inventory.DeleteProduct(ID);
         }
 
         public String SearchProduct(int ID)
         {
-            Product product = Inventory.searchProduct(ID);
+            Product product = Inventory.SearchProduct(ID);
             if (product != null)
             {
                 return $"product found {ProductDisplay.GetProductDetails(product)}";
@@ -40,10 +40,10 @@ namespace SimpleInventory
             }
         }
 
-        internal bool editProduct(int ID, String newName, int newPrice, int newQuantity)
+        internal bool EditProduct(int id, String newName, int newPrice, int newQuantity)
         {
-            Product modifiedProduct = new Product(ID, newName, newPrice, newQuantity);
-            return Inventory.editProduct(modifiedProduct, ID);
+            Product modifiedProduct = new Product(id, newName, newPrice, newQuantity);
+            return Inventory.EditProduct(modifiedProduct, id);
         }
     }
 }

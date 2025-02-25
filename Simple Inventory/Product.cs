@@ -13,9 +13,9 @@ namespace SimpleInventory
         public int Price { get; set; }
         public int Quantity { get; set; }
 
-        public Product(int Id,string name, int price, int quantity)
+        public Product(int id,string name, int price, int quantity)
         {
-            ID = Id;
+            ID = id;
             Name = name;
             Price = price;
             Quantity = quantity;
