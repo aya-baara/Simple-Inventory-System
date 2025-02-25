@@ -21,10 +21,7 @@ namespace SimpleInventory
             Quantity = quantity;
            
         }
-        public Product(int Id)
-        {
-            ID = Id;
-        }
+      
 
 
 
