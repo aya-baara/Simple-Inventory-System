@@ -1,14 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-using SimpleInventory;
+﻿using SimpleInventory;
+using System;
 
-
-class Program
-{
-    static void Main()
-    {
-        Menu menu = new Menu();
-        menu.showMenu();
-
-
-    }
-}
+var menu = new Menu();
+menu.showMenu();
