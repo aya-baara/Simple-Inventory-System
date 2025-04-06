@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using SimpleInventory;
+using System;
+
+var menu = new Menu();
+menu.showMenu();
