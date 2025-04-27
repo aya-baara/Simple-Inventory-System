@@ -172,6 +172,42 @@ class MsSql : IDataBase
         }
     }
 
+    public List<Product> GetAllProducts()
+    {
+        List<Product> products = new List<Product>();
+
+        try
+        {
+            using (var conn = GetOpenConnection())
+            {
+                string query = "SELECT Product_id, Name, Price, Quantity FROM Products";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Product product = new Product(
+                                reader.GetInt32(0),  // Product_id
+                                reader.GetString(1), // Name
+                                reader.GetInt32(2),  // Price
+                                reader.GetInt32(3)   // Quantity
+                            );
+
+                            products.Add(product);
+                        }
+                    }
+                }
+            }
+        }
+        catch
+        {
+            return null;
+        }
+
+        return products;
+    }
 
 }
 
