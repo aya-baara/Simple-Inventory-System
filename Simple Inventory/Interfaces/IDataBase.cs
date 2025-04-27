@@ -14,4 +14,6 @@ public interface IDataBase
 
     public abstract bool CheckIfExist(int id);
 
+    public List<Product> GetAllProducts();
+
 }
