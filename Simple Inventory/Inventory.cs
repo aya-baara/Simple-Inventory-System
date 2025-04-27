@@ -33,6 +33,11 @@ class Inventory
     {
         return dataBase.Delete(id);
     }
+
+    public List<Product> GetAllProducts()
+    {
+        return dataBase.GetAllProducts();
+    }
 }
 
 
