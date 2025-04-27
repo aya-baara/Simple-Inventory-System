@@ -1,8 +1,13 @@
 ﻿
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+
 namespace SimpleInventory
 {
     public class Product
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.Int32)]
         public int ID  { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
