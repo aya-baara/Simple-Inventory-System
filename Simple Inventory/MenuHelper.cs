@@ -1,11 +1,12 @@
-﻿using SimpleInventory;
+﻿using Simple_Inventory.DataBase;
+using SimpleInventory;
 
 
 namespace SimpleInventory
 {
     class MenuHelper
     {
-        public static ProductService productService = new ProductService();
+        public static ProductService productService = new ProductService(new MsSql());
         public static void AddProduct()
         {
             Console.Write("Enter product ID (number): ");
