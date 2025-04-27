@@ -125,24 +125,45 @@ class MsSql : IDataBase
     }
 
 
-    public bool updateProduct(Product product)
+    public bool UpdateProduct(Product modifiedProduct)
     {
         try
         {
             using (var conn = GetOpenConnection())
             {
-                string sql = "UPDATE Products SET Name = @Name, Price = @Price, Quantity = @Quantity WHERE Product_id = @Id";
+                List<string> fieldsToUpdate = new List<string>();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
 
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                if (!string.IsNullOrEmpty(modifiedProduct.Name))
                 {
-                    cmd.Parameters.AddWithValue("@Name", product.Name);
-                    cmd.Parameters.AddWithValue("@Price", product.Price);
-                    cmd.Parameters.AddWithValue("@Quantity", product.Quantity);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    return rowsAffected > 0;
+                    fieldsToUpdate.Add("Name = @Name");
+                    cmd.Parameters.AddWithValue("@Name", modifiedProduct.Name);
                 }
+
+                if (modifiedProduct.Price != -1)
+                {
+                    fieldsToUpdate.Add("Price = @Price");
+                    cmd.Parameters.AddWithValue("@Price", modifiedProduct.Price);
+                }
+
+                if (modifiedProduct.Quantity != -1)
+                {
+                    fieldsToUpdate.Add("Quantity = @Quantity");
+                    cmd.Parameters.AddWithValue("@Quantity", modifiedProduct.Quantity);
+                }
+
+                if (fieldsToUpdate.Count == 0)
+                {
+                    return false;
+                }
+
+                string sql = $"UPDATE Products SET {string.Join(", ", fieldsToUpdate)} WHERE Product_id = @Id";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@Id", modifiedProduct.ID);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0;
             }
         }
         catch
