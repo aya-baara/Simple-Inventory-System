@@ -1,4 +1,7 @@
 ﻿
+using Simple_Inventory.DataBaseConnection;
+using Microsoft.Data.SqlClient;
+
 namespace SimpleInventory
 {
        class Inventory
@@ -7,28 +10,44 @@ namespace SimpleInventory
             public IReadOnlyDictionary<int, Product> Products => products;
 
             public Inventory()
-                {
-                    products = new Dictionary<int, Product>();
-                }
+            {
+                products = new Dictionary<int, Product>();
+            }
 
             public bool AddProduct(Product product)
             {
-                if (products.ContainsKey(product.ID))
+                try
                 {
-                    return false;
+                    using (var conn = new SqlConnection(MsSQLConnection.MsSqlConnectionString))
+                    {
+                        conn.Open();
+                        string sql = "INSERT INTO Products (Product_id,Name, Price, Quantity) VALUES (@Id,@Name, @Price, @Quantity)";
+
+                        using (SqlCommand cmd = new SqlCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Id", product.ID);
+                            cmd.Parameters.AddWithValue("@Name", product.Name);
+                            cmd.Parameters.AddWithValue("@Price", product.Price);
+                            cmd.Parameters.AddWithValue("@Quantity", product.Quantity);
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            return rowsAffected > 0; 
+                        }
+                    }
                 }
-                else
+                catch
                 {
-                    products.Add(product.ID, product);
-                    return true;
+                    return false; 
                 }
             }
+
 
 
             public Product? SearchProduct(int id)
-            {
-                return products.GetValueOrDefault(id, null);
-            }
+                {
+                    return products.GetValueOrDefault(id, null);
+                }
 
             public bool EditProduct(Product modifiedProduct,int id)
             {
