@@ -1,4 +1,5 @@
 ﻿using Simple_Inventory.DataBase;
+using Simple_Inventory.Interfaces;
 using SimpleInventory;
 
 
@@ -6,7 +7,12 @@ namespace SimpleInventory
 {
     class MenuHelper
     {
-        public static ProductService productService = new ProductService(new MsSql());
+
+        public static ProductService productService;
+        public MenuHelper(IDataBase dataBase)
+        {
+            productService = new ProductService(dataBase);
+        }
         public static void AddProduct()
         {
             Console.Write("Enter product ID (number): ");
