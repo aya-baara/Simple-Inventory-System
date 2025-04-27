@@ -1,11 +1,7 @@
-﻿
-using SimpleInventory;
-
-namespace SimpleInventory
+﻿namespace SimpleInventory
 {
     class Menu
     {
-        public ProductService productService = new ProductService();
         public void showMenu()
         {
             while (true)
