@@ -5,7 +5,6 @@ namespace SimpleInventory
 {
     class Menu
     {
-        public Inventory inventory = new Inventory();
         public ProductService productService = new ProductService();
         public void showMenu()
         {
