@@ -125,9 +125,30 @@ class MsSql : IDataBase
     }
 
 
-    public bool updateProduct()
+    public bool updateProduct(Product product)
     {
-        throw new NotImplementedException();
+        try
+        {
+            using (var conn = GetOpenConnection())
+            {
+                string sql = "UPDATE Products SET Name = @Name, Price = @Price, Quantity = @Quantity WHERE Product_id = @Id";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Name", product.Name);
+                    cmd.Parameters.AddWithValue("@Price", product.Price);
+                    cmd.Parameters.AddWithValue("@Quantity", product.Quantity);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        catch
+        {
+            return false;
+        }
     }
 
 
