@@ -8,7 +8,7 @@ public interface IDataBase
 
     public abstract bool Delete(int id);
 
-    public abstract bool updateProduct(Product product);
+    public abstract bool UpdateProduct(Product product);
 
     public abstract Product? Search(int id);
 
