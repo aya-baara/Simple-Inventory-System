@@ -18,7 +18,7 @@ namespace SimpleInventory
             {
                 try
                 {
-                    using (var conn = new SqlConnection(MsSQLConnection.MsSqlConnectionString))
+                    using (var conn = MsSQLConnection.GetOpenConnection())
                     {
                         conn.Open();
                         string sql = "INSERT INTO Products (Product_id,Name, Price, Quantity) VALUES (@Id,@Name, @Price, @Quantity)";
