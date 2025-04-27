@@ -1,14 +1,16 @@
 ﻿
 
+using Simple_Inventory.Interfaces;
+
 namespace SimpleInventory
 {
     class ProductService
     {
 
         public Inventory Inventory { get; set; }
-        public ProductService()
+        public ProductService(IDataBase dataBase)
         {
-            Inventory = new Inventory();
+            Inventory = new Inventory(dataBase);
         }
         public bool CheckProdutDuplication(int ID)
         {
@@ -43,7 +45,7 @@ namespace SimpleInventory
         internal bool EditProduct(int id, String newName, int newPrice, int newQuantity)
         {
             Product modifiedProduct = new Product(id, newName, newPrice, newQuantity);
-            return Inventory.EditProduct(modifiedProduct, id);
+            return Inventory.EditProduct(modifiedProduct);
         }
     }
 }
