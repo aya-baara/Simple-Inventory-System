@@ -1,0 +1,10 @@
+{
+  "SQL": {
+    "MsSqlConnectionString": "Server=DESKTOP-NKVRDQD;Database=SimpleInventory;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "Mongo": {
+    "ConnectionString": "mongodb://localhost:27017",
+    "DatabaseName": "SimpleInventoryDB",
+    "CollectionName": "Products"
+  }
+  }
