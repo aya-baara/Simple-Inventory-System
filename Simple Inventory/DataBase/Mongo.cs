@@ -5,7 +5,7 @@ using SimpleInventory;
 
 namespace Simple_Inventory.DataBase;
 
-class MongoProductRepository : IProductRepository
+public class MongoProductRepository : IProductRepository
 {
     private readonly IMongoCollection<Product> _productsCollection;
 

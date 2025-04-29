@@ -4,7 +4,7 @@ using Simple_Inventory.Interfaces;
 using SimpleInventory;
 
 namespace Simple_Inventory.DataBase;
-class MsSqlProductRepository : IProductRepository
+public class MsSqlProductRepository : IProductRepository
 {
     private SqlConnection GetOpenConnection()
     {
