@@ -75,7 +75,7 @@ public class MsSqlProductRepository : IProductRepository
                     cmd.Parameters.AddWithValue("@Id", id);
                     int rowsAffected = cmd.ExecuteNonQuery();
 
-                    return rowsAffected ==1;
+                    return rowsAffected == 1;
                 }
             }
         }
