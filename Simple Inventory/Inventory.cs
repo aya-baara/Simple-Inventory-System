@@ -14,7 +14,7 @@ class Inventory
     public bool AddProduct(Product product)
     {
         if (DataBase.CheckIfExist(product.ID)) return false;
-        return DataBase.AddProduct(product);
+        return DataBase.Add(product);
     }
 
     public Product? SearchProduct(int id)
@@ -25,7 +25,7 @@ class Inventory
     public bool EditProduct(Product modifiedProduct)
     {
 
-        return DataBase.UpdateProduct(modifiedProduct);
+        return DataBase.Update(modifiedProduct);
 
     }
 

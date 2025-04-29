@@ -13,7 +13,7 @@ public class MsSqlProductRepository : IProductRepository
         return conn;
     }
 
-    public bool AddProduct(Product product)
+    public bool Add(Product product)
     {
         try
         {
@@ -125,7 +125,7 @@ public class MsSqlProductRepository : IProductRepository
     }
 
 
-    public bool UpdateProduct(Product modifiedProduct)
+    public bool Update(Product modifiedProduct)
     {
         try
         {

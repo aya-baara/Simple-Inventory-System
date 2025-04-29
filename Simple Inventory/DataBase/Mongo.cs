@@ -16,7 +16,7 @@ public class MongoProductRepository : IProductRepository
         _productsCollection = database.GetCollection<Product>(MongoDBConnection.CollectionName);
     }
 
-    public bool AddProduct(Product product)
+    public bool Add(Product product)
     {
         try
         {
@@ -73,7 +73,7 @@ public class MongoProductRepository : IProductRepository
         }
     }
 
-    public bool UpdateProduct(Product modifiedProduct)
+    public bool Update(Product modifiedProduct)
     {
         try
         {
