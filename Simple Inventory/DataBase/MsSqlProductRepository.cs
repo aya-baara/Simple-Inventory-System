@@ -68,7 +68,7 @@ public class MsSqlProductRepository : IProductRepository
         {
             using (var conn = GetOpenConnection())
             {
-                string sql = "Delete From Products Where Product_id = @Id";
+                string sql = "DELETE FROM Products WHERE Product_id = @Id";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
