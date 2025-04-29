@@ -14,7 +14,7 @@ namespace SimpleInventory
             switch (choice)
             {
                 case "1":
-                    menuHelper = new MenuHelper(new MsSql());
+                    menuHelper = new MenuHelper(new MsSqlProductRepository());
                     break;
                 case "2":
                     menuHelper = new MenuHelper(new MongoProductRepository());
