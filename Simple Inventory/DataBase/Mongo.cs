@@ -75,29 +75,12 @@ class MongoDb : IDataBase
         {
             var filter = Builders<Product>.Filter.Eq(p => p.ID, modifiedProduct.ID);
 
-            var updates = new List<UpdateDefinition<Product>>();
+            var update = BuildUpdateDefinition(modifiedProduct);
 
-            if (!string.IsNullOrEmpty(modifiedProduct.Name))
+            if (update == null)
             {
-                updates.Add(Builders<Product>.Update.Set(p => p.Name, modifiedProduct.Name));
+                return false;
             }
-
-            if (modifiedProduct.Price != -1)
-            {
-                updates.Add(Builders<Product>.Update.Set(p => p.Price, modifiedProduct.Price));
-            }
-
-            if (modifiedProduct.Quantity != -1)
-            {
-                updates.Add(Builders<Product>.Update.Set(p => p.Quantity, modifiedProduct.Quantity));
-            }
-
-            if (updates.Count == 0)
-            {
-                return false; 
-            }
-
-            var update = Builders<Product>.Update.Combine(updates);
 
             var result = _productsCollection.UpdateOne(filter, update);
 
@@ -109,6 +92,27 @@ class MongoDb : IDataBase
         }
     }
 
+    private UpdateDefinition<Product>? BuildUpdateDefinition(Product product)
+    {
+        var updates = new List<UpdateDefinition<Product>>();
+
+        if (!string.IsNullOrEmpty(product.Name))
+        {
+            updates.Add(Builders<Product>.Update.Set(p => p.Name, product.Name));
+        }
+
+        if (product.Price != -1)
+        {
+            updates.Add(Builders<Product>.Update.Set(p => p.Price, product.Price));
+        }
+
+        if (product.Quantity != -1)
+        {
+            updates.Add(Builders<Product>.Update.Set(p => p.Quantity, product.Quantity));
+        }
+
+        return updates.Count > 0 ? Builders<Product>.Update.Combine(updates) : null;
+    }
 
     public List<Product> GetAllProducts()
     {
