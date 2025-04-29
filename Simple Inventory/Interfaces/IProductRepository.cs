@@ -1,8 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using SimpleInventory;
+﻿using SimpleInventory;
 
 namespace Simple_Inventory.Interfaces;
-public interface IDataBase
+public interface IProductRepository
 {
     public abstract bool AddProduct(Product product);
 

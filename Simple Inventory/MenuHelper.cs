@@ -9,7 +9,7 @@ namespace SimpleInventory
     {
 
         public static ProductService productService;
-        public MenuHelper(IDataBase dataBase)
+        public MenuHelper(IProductRepository dataBase)
         {
             productService = new ProductService(dataBase);
         }

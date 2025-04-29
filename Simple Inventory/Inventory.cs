@@ -4,9 +4,9 @@ namespace SimpleInventory;
 
 class Inventory
 {
-    private IDataBase DataBase;
+    private IProductRepository DataBase;
 
-    public Inventory(IDataBase dataBase)
+    public Inventory(IProductRepository dataBase)
     {
         DataBase = dataBase;
     }

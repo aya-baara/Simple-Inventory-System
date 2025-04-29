@@ -8,7 +8,7 @@ namespace SimpleInventory
     {
 
         public Inventory Inventory { get; set; }
-        public ProductService(IDataBase dataBase)
+        public ProductService(IProductRepository dataBase)
         {
             Inventory = new Inventory(dataBase);
         }
