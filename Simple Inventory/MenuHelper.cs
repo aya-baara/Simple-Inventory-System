@@ -1,17 +1,12 @@
-﻿using Simple_Inventory.DataBase;
-using Simple_Inventory.Interfaces;
-using SimpleInventory;
-
-
-namespace SimpleInventory
+﻿namespace SimpleInventory
 {
     class MenuHelper
     {
 
         public static ProductService productService;
-        public MenuHelper(IProductRepository dataBase)
+        public MenuHelper(ProductService prodService)
         {
-            productService = new ProductService(dataBase);
+            productService = prodService;
         }
         public static void AddProduct()
         {

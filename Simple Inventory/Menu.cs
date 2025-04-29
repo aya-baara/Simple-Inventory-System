@@ -14,10 +14,10 @@ namespace SimpleInventory
             switch (choice)
             {
                 case "1":
-                    menuHelper = new MenuHelper(new MsSqlProductRepository());
+                    menuHelper = new MenuHelper(new ProductService(new MsSqlProductRepository()));
                     break;
                 case "2":
-                    menuHelper = new MenuHelper(new MongoProductRepository());
+                    menuHelper = new MenuHelper(new ProductService(new MongoProductRepository()));
                     break;
             }
             while (true)
@@ -59,7 +59,7 @@ namespace SimpleInventory
             }
         }
 
-       
+
 
     }
 }
