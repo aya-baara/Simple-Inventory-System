@@ -23,8 +23,9 @@ public class MongoProductRepository : IProductRepository
             _productsCollection.InsertOne(product);
             return true;
         }
-        catch
+        catch (Exception e)
         {
+            Console.WriteLine(e.Message);
             return false;
         }
     }
@@ -36,8 +37,9 @@ public class MongoProductRepository : IProductRepository
             var filter = Builders<Product>.Filter.Eq(p => p.ID, id);
             return _productsCollection.Find(filter).Any();
         }
-        catch
+        catch(Exception e)
         {
+            Console.WriteLine(e.Message);
             return false;
         }
     }
@@ -50,8 +52,9 @@ public class MongoProductRepository : IProductRepository
             var result = _productsCollection.DeleteOne(filter);
             return result.DeletedCount == 1;
         }
-        catch
+        catch(Exception e)
         {
+            Console.WriteLine(e.Message);
             return false;
         }
     }
@@ -63,8 +66,9 @@ public class MongoProductRepository : IProductRepository
             var filter = Builders<Product>.Filter.Eq(p => p.ID, id);
             return _productsCollection.Find(filter).FirstOrDefault();
         }
-        catch
+        catch(Exception e)
         {
+            Console.WriteLine(e.Message);
             return null;
         }
     }
@@ -86,8 +90,9 @@ public class MongoProductRepository : IProductRepository
 
             return result.ModifiedCount > 0;
         }
-        catch
+        catch (Exception e)
         {
+            Console.WriteLine(e.Message);
             return false;
         }
     }
@@ -120,8 +125,9 @@ public class MongoProductRepository : IProductRepository
         {
             return _productsCollection.Find(_ => true).ToList();
         }
-        catch
+        catch (Exception e)
         {
+            Console.WriteLine(e.Message);
             return null;
         }
     }
