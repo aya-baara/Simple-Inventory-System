@@ -104,10 +104,10 @@ public class MsSqlProductRepository : IProductRepository
                         {
                             return new Product
                             (
-                                 reader.GetInt32(0),  //Id
-                                 reader.GetString(1), // Name
-                                 reader.GetInt32(2),  // Price
-                                 reader.GetInt32(3)  // Quantity
+                                reader.GetInt32(reader.GetOrdinal("Product_id")),
+                                reader.GetString(reader.GetOrdinal("Name")),
+                                reader.GetInt32(reader.GetOrdinal("Price")),
+                                reader.GetInt32(reader.GetOrdinal("Quantity"))
                             );
                         }
                         else
