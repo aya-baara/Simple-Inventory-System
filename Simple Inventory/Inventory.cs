@@ -13,8 +13,7 @@ class Inventory
 
     public bool AddProduct(Product product)
     {
-        if (DataBase.CheckIfExist(product.ID)) return false;
-        return DataBase.Add(product);
+        return (DataBase.CheckIfExist(product.ID)) ? true : false;
     }
 
     public Product? SearchProduct(int id)
