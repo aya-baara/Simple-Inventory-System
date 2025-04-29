@@ -5,11 +5,11 @@ using SimpleInventory;
 
 namespace Simple_Inventory.DataBase;
 
-class MongoDb : IProductRepository
+class MongoProductRepository : IProductRepository
 {
     private readonly IMongoCollection<Product> _productsCollection;
 
-    public MongoDb()
+    public MongoProductRepository()
     {
         var client = new MongoClient(MongoDBConnection.ConnectionString);
         var database = client.GetDatabase(MongoDBConnection.DatabaseName);

@@ -17,7 +17,7 @@ namespace SimpleInventory
                     menuHelper = new MenuHelper(new MsSql());
                     break;
                 case "2":
-                    menuHelper = new MenuHelper(new MongoDb());
+                    menuHelper = new MenuHelper(new MongoProductRepository());
                     break;
             }
             while (true)
