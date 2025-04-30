@@ -1,14 +1,25 @@
-﻿
-using SimpleInventory;
+﻿using Simple_Inventory.DataBase;
 
 namespace SimpleInventory
 {
     class Menu
     {
-        public Inventory inventory = new Inventory();
-        public ProductService productService = new ProductService();
+        MenuHelper menuHelper;
         public void showMenu()
         {
+            Console.WriteLine("\n=== Simple Inventory Management System ===");
+            Console.WriteLine("1. Use SQL");
+            Console.WriteLine("2. UseMogoDB");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    menuHelper = new MenuHelper(new ProductService(new MsSqlProductRepository()));
+                    break;
+                case "2":
+                    menuHelper = new MenuHelper(new ProductService(new MongoProductRepository()));
+                    break;
+            }
             while (true)
             {
                 Console.WriteLine("\n=== Simple Inventory Management System ===");
@@ -20,7 +31,7 @@ namespace SimpleInventory
                 Console.WriteLine("6. Exit");
                 Console.Write("Choose an option (1-6): ");
 
-                string choice = Console.ReadLine();
+                choice = Console.ReadLine();
                 switch (choice)
                 {
                     case "1":
@@ -48,7 +59,7 @@ namespace SimpleInventory
             }
         }
 
-       
+
 
     }
 }

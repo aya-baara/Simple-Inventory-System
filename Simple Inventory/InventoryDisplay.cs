@@ -1,4 +1,4 @@
-﻿
+﻿using Simple_Inventory.Interfaces;
 
 namespace SimpleInventory
 {
@@ -6,9 +6,9 @@ namespace SimpleInventory
     {
         public static void DisplayAllProducts(Inventory inventory)
         {
-            foreach (var item in inventory.Products)
+            foreach (var item in inventory.GetAllProducts())
             {
-                System.Console.WriteLine(ProductDisplay.GetProductDetails(item.Value));
+                System.Console.WriteLine(ProductDisplay.GetProductDetails(item));
             }
         }
     }
